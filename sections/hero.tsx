@@ -15,7 +15,7 @@ export function HeroSection() {
       <div className="pointer-events-none absolute inset-0">
         <Image
           src="/image.webp"
-          alt=""
+          alt={`${siteConfig.name} — custom software development team collaborating on a web application project`}
           fill
           priority
           className="object-cover"
@@ -37,15 +37,16 @@ export function HeroSection() {
         >
           {/* <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border glass-panel px-4 py-1.5 text-xs font-medium text-muted-foreground">
             <Sparkles className="size-3.5 text-accent" aria-hidden />
-            USA & Pakistan delivery · Next.js · AI · Cloud
+            USA-based delivery · Next.js · AI · Cloud
           </div> */}
           <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Software that ships like a{" "}
-            <span className="text-gradient">premium product team</span>
+            Software development company for{" "}
+            <span className="text-gradient">Next.js, SaaS & AI</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground sm:text-xl">
-            {siteConfig.name} partners with startups and growing businesses to design, build, and
-            scale web apps, AI features, and automation—with the polish your users notice.
+            {siteConfig.name} is a US-based software development company partnering with startups
+            and growing businesses across the United States to design, build, and scale web apps,
+            AI features, and automation—with the polish your users notice.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
             <Link

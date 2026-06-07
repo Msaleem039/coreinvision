@@ -1,31 +1,41 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { team } from "@/lib/data";
 import { siteConfig } from "@/lib/site";
+import { createMetadata } from "@/lib/seo/metadata";
+import { pageKeywords } from "@/lib/seo/keywords";
+import { breadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/components/seo/json-ld";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/motion";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: `Learn about ${siteConfig.name}'s mission, how we work across USA and Pakistan, and the team behind the delivery.`,
-};
+export const metadata = createMetadata({
+  title: "About Us — US Software Development Agency",
+  description:
+    "Meet coreinvision: senior software engineers delivering Next.js, SaaS, AI, and cloud projects for US startups and SMBs. Mission, team, E-E-A-T.",
+  path: "/about",
+  keywords: ["about software development company", "coreinvision team", "remote software agency"],
+});
 
 export default function AboutPage() {
+  const breadcrumbs = [{ name: "About", path: "/about" }];
   return (
     <>
+      <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <Section className="border-b border-border/60 bg-muted/20 pb-16 pt-12 sm:pt-16">
         <Container>
+          <Breadcrumbs items={breadcrumbs} className="mb-6" />
           <FadeIn className="max-w-3xl">
             <p className="text-sm font-semibold text-primary">About</p>
             <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
               Built for founders who care about craft and calendar
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
-              {siteConfig.name} is a senior-led software agency partnering with startups in the United
-              States and established SMBs in Pakistan. We combine product judgment with engineering
+              {siteConfig.name} is a senior-led software agency partnering with startups and
+              established SMBs across the United States. We combine product judgment with engineering
               depth—so you ship faster without mortgaging your codebase.
             </p>
           </FadeIn>
@@ -61,8 +71,8 @@ export default function AboutPage() {
                 <div>
                   <dt className="text-sm font-semibold text-primary">Vision</dt>
                   <dd className="mt-2 text-muted-foreground">
-                    Become the default technical partner for cross-border teams who want US-quality
-                    product execution with pragmatic emerging-market operations awareness.
+                    Become the default technical partner for US teams who want premium product
+                    execution with pragmatic, founder-friendly delivery.
                   </dd>
                 </div>
               </dl>

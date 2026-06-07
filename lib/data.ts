@@ -92,11 +92,11 @@ export const testimonials = [
   },
   {
     quote:
-      "We needed WhatsApp-friendly updates and a team that understood local business pace. They delivered automation that cut manual order work by half.",
+      "We needed responsive updates and a team that understood our business pace. They delivered automation that cut manual order work by half.",
     name: "Ayesha K.",
     role: "Operations Director",
-    org: "Retail group · Pakistan",
-    flag: "🇵🇰",
+    org: "Retail group · USA",
+    flag: "🇺🇸",
   },
   {
     quote:
@@ -134,7 +134,7 @@ export const portfolioProjects = [
   {
     slug: "crescent-ops",
     title: "Crescent Ops Hub",
-    sector: "Logistics · Pakistan",
+    sector: "Logistics · USA",
     problem:
       "Dispatch teams relied on spreadsheets and WhatsApp threads, causing missed handoffs.",
     solution:

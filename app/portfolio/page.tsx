@@ -1,24 +1,33 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { portfolioProjects } from "@/lib/data";
+import { createMetadata } from "@/lib/seo/metadata";
+import { pageKeywords } from "@/lib/seo/keywords";
+import { breadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/components/seo/json-ld";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/motion";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Portfolio",
+export const metadata = createMetadata({
+  title: "Case Studies & Portfolio — Software Projects",
   description:
-    "Case studies in SaaS billing, logistics operations, and AI support—built with Next.js, AWS, and automation.",
-};
+    "Software development case studies: SaaS billing, logistics automation, AI support copilots. Next.js, AWS, measurable results.",
+  path: "/portfolio",
+  keywords: [pageKeywords.portfolio.primary, ...pageKeywords.portfolio.secondary],
+});
 
 export default function PortfolioPage() {
+  const breadcrumbs = [{ name: "Case Studies", path: "/portfolio" }];
   return (
     <>
+      <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <Section className="border-b border-border/60 bg-muted/20 pb-16 pt-12 sm:pt-16">
         <Container>
+          <Breadcrumbs items={breadcrumbs} className="mb-6" />
           <FadeIn className="max-w-3xl">
             <p className="text-sm font-semibold text-primary">Portfolio</p>
             <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Case studies</h1>

@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
-import { siteConfig } from "@/lib/site";
+import { StickyCta } from "@/components/sticky-cta";
+import { JsonLd } from "@/components/seo/json-ld";
+import { globalSchemas } from "@/lib/seo/schema";
+import { defaultMetadata } from "@/lib/seo/metadata";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,26 +22,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: `${siteConfig.name} — ${siteConfig.tagline}`,
-    template: `%s · ${siteConfig.name}`,
+  ...defaultMetadata,
+  metadataBase: defaultMetadata.metadataBase,
+  icons: {
+    icon: [{ url: "/icon", type: "image/png" }],
+    apple: [{ url: "/apple-icon", type: "image/png" }],
   },
-  description: siteConfig.description,
-  openGraph: {
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    locale: "en_US",
-    type: "website",
+  manifest: "/manifest.webmanifest",
+  alternates: {
+    ...defaultMetadata.alternates,
+    types: {
+      "application/rss+xml": [{ url: "/feed.xml", title: "Blog RSS Feed" }],
+    },
   },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
-    description: siteConfig.description,
-  },
-  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0f19" },
+  ],
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -52,11 +57,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${geistMono.variable} h-full scroll-smooth`}
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col pb-20 md:pb-0">
+        <JsonLd data={globalSchemas()} />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
+          <StickyCta />
         </ThemeProvider>
       </body>
     </html>

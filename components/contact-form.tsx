@@ -105,8 +105,8 @@ export function ContactForm({ className, onSuccess }: ContactFormProps) {
         </div>
         <h3 className="mt-5 text-lg font-semibold">Message sent successfully</h3>
         <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-          Thanks for reaching out. We&apos;ll respond to your email within one business day. For
-          faster replies in Pakistan, you can also message us on WhatsApp.
+          Thanks for reaching out. We&apos;ll respond to your email within one business day. You can
+          also message us on WhatsApp for faster follow-up.
         </p>
         <Button type="button" variant="secondary" className="mt-6" onClick={() => setStatus("idle")}>
           Send another message

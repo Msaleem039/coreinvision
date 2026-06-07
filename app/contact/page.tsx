@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { siteConfig, whatsappHref } from "@/lib/site";
+import { createMetadata } from "@/lib/seo/metadata";
+import { pageKeywords } from "@/lib/seo/keywords";
+import { breadcrumbSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/components/seo/json-ld";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FadeIn } from "@/components/motion";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
@@ -11,24 +15,30 @@ import { BookingWidget } from "@/components/booking-widget";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: `Contact ${siteConfig.name} for Next.js, AI, SaaS, and cloud projects. Email, WhatsApp, or book a call.`,
-};
+export const metadata = createMetadata({
+  title: "Contact — Hire Software Developers",
+  description:
+    "Contact coreinvision for Next.js, AI, SaaS & cloud projects. Form, WhatsApp, phone, map & Calendly booking. USA.",
+  path: "/contact",
+  keywords: [pageKeywords.contact.primary, ...pageKeywords.contact.longTail],
+});
 
 export default function ContactPage() {
+  const breadcrumbs = [{ name: "Contact", path: "/contact" }];
   return (
     <>
+      <JsonLd data={breadcrumbSchema(breadcrumbs)} />
       <Section className="border-b border-border/60 bg-muted/20 pb-12 pt-12 sm:pb-16 sm:pt-16">
         <Container>
+          <Breadcrumbs items={breadcrumbs} className="mb-6" />
           <FadeIn className="max-w-3xl">
             <p className="text-sm font-semibold text-primary">Contact</p>
             <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
               Tell us what you are building
             </h1>
             <p className="mt-5 text-lg text-muted-foreground">
-              We respond within one business day. For Pakistan-based teams, WhatsApp is often the
-              fastest way to align on scope and timelines.
+              We respond within one business day. WhatsApp is available for quick project inquiries
+              and scheduling.
             </p>
             <Link
               href={whatsappHref(`Hi ${siteConfig.name}, I'd like to discuss a project.`)}

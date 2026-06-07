@@ -28,8 +28,7 @@ export function TestimonialSlider() {
         <FadeIn className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What clients say</h2>
           <p className="mt-4 text-muted-foreground sm:text-lg">
-            Teams across the United States and Pakistan partner with us for velocity without
-            sacrificing quality.
+            Teams across the United States partner with us for velocity without sacrificing quality.
           </p>
         </FadeIn>
 
