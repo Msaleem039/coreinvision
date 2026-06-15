@@ -12,7 +12,8 @@ export function organizationSchema() {
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: absoluteUrl("/icon"),
+    logo: absoluteUrl("/home1.jpg"),
+    image: absoluteUrl("/home1.jpg"),
     description: siteConfig.description,
     email: siteConfig.email,
     ...(siteConfig.phone ? { telephone: siteConfig.phone } : {}),
@@ -33,11 +34,11 @@ export function organizationSchema() {
     ].filter(Boolean),
     areaServed: ["United States"],
     knowsAbout: [
-      "Next.js development",
-      "SaaS engineering",
-      "AI integration",
-      "Cloud DevOps",
-      "Workflow automation",
+      "Local SEO",
+      "Web design",
+      "Lead generation",
+      "High-converting websites",
+      "Search engine optimization",
     ],
   };
 }
@@ -51,15 +52,7 @@ export function websiteSchema() {
     url: siteConfig.url,
     description: siteConfig.description,
     publisher: { "@id": `${siteConfig.url}/#organization` },
-    inLanguage: ["en-US"],
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+    inLanguage: "en-US",
   };
 }
 
@@ -106,15 +99,45 @@ export function localBusinessSchema() {
 }
 
 export function breadcrumbSchema(items: BreadcrumbItem[]) {
+  const trail =
+    items[0]?.path === "/" ? items : [{ name: "Home", path: "/" }, ...items];
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
+    itemListElement: trail.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
       item: absoluteUrl(item.path),
     })),
+  };
+}
+
+export function webPageSchema(input: {
+  name: string;
+  description: string;
+  path: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${absoluteUrl(input.path)}#webpage`,
+    name: input.name,
+    description: input.description,
+    url: absoluteUrl(input.path),
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    about: { "@id": `${siteConfig.url}/#organization` },
+    inLanguage: "en-US",
+    ...(input.image
+      ? {
+          primaryImageOfPage: {
+            "@type": "ImageObject",
+            url: absoluteUrl(input.image),
+          },
+        }
+      : {}),
   };
 }
 

@@ -4,7 +4,6 @@ import { pageKeywords } from "@/lib/seo/keywords";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 import { blogPosts, blogCategories } from "@/lib/blog/posts";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/motion";
@@ -23,13 +22,10 @@ export default function BlogIndexPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
-      <Section className="border-b border-border/60 bg-muted/20 pb-12 pt-12 sm:pt-16">
+      <Section className="border-b border-border bg-surface pb-12 pt-12 sm:pt-16">
         <Container>
-          <Breadcrumbs items={breadcrumbs} className="mb-6" />
           <FadeIn className="max-w-3xl">
-            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-              Software engineering blog
-            </h1>
+            <h1 className="section-title">Software engineering blog</h1>
             <p className="mt-5 text-lg text-muted-foreground">
               Practical guides on Next.js, SaaS delivery, AI integration, and technical SEO for
               product teams.

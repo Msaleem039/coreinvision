@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { StickyCta } from "@/components/sticky-cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { globalSchemas } from "@/lib/seo/schema";
+import { siteConfig } from "@/lib/site";
 import { defaultMetadata } from "@/lib/seo/metadata";
 
 const inter = Inter({
@@ -24,6 +25,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   ...defaultMetadata,
   metadataBase: defaultMetadata.metadataBase,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
   icons: {
     icon: [{ url: "/icon", type: "image/png" }],
     apple: [{ url: "/apple-icon", type: "image/png" }],
@@ -38,10 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b0f19" },
-  ],
+  themeColor: "#0d5c6d",
   width: "device-width",
   initialScale: 1,
 };
@@ -59,7 +58,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col pb-20 md:pb-0">
         <JsonLd data={globalSchemas()} />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

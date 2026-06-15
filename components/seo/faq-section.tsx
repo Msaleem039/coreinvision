@@ -24,13 +24,13 @@ export function FaqSection({
   return (
     <section className={cn("py-16 sm:py-20", className)} aria-labelledby="faq-heading">
       <div className="mx-auto max-w-3xl text-center">
-        <h2 id="faq-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h2 id="faq-heading" className="section-title">
           {title}
         </h2>
         {subtitle ? <p className="mt-3 text-muted-foreground sm:text-lg">{subtitle}</p> : null}
       </div>
 
-      <div className="mx-auto mt-10 max-w-3xl divide-y divide-border rounded-2xl border border-border bg-card">
+      <div className="mx-auto mt-10 max-w-3xl divide-y divide-border card-clean overflow-hidden">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index;
           return (

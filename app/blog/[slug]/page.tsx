@@ -5,11 +5,9 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { articleSchema, breadcrumbSchema } from "@/lib/seo/schema";
 import { blogPosts, getBlogPost, getRelatedPosts } from "@/lib/blog/posts";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { ShareButtons } from "@/components/seo/share-buttons";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
-import { buttonVariants } from "@/components/ui/button";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -82,11 +80,9 @@ export default async function BlogPostPage({ params }: Props) {
         ]}
       />
 
-      <Section className="border-b border-border/60 bg-muted/20 pb-12 pt-12">
+      <Section className="border-b border-border bg-surface pb-12 pt-12">
         <Container className="max-w-3xl">
-          <Breadcrumbs items={breadcrumbs} className="mb-6" />
-          <p className="text-sm font-semibold text-primary">{post.category}</p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">{post.title}</h1>
+          <h1 className="section-title">{post.title}</h1>
           <p className="mt-4 text-muted-foreground">{post.description}</p>
           <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <span>
@@ -147,7 +143,7 @@ export default async function BlogPostPage({ params }: Props) {
             </aside>
           ) : null}
 
-          <Link href="/contact" className={`${buttonVariants({ size: "lg" })} mt-12 inline-flex`}>
+          <Link href="/contact" className="btn-primary mt-12 inline-flex">
             Talk to our engineering team
           </Link>
         </Container>

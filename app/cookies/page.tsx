@@ -2,7 +2,6 @@ import Link from "next/link";
 import { createMetadata } from "@/lib/seo/metadata";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 
 export const metadata = createMetadata({
   title: "Cookie Policy",
@@ -15,7 +14,6 @@ export default function CookiesPage() {
   return (
     <Section className="py-16">
       <Container className="max-w-3xl">
-        <Breadcrumbs items={[{ name: "Cookie Policy", path: "/cookies" }]} className="mb-8" />
         <h1 className="text-4xl font-semibold tracking-tight">Cookie Policy</h1>
         <p className="mt-2 text-sm text-muted-foreground">Last updated: March 2026</p>
         <div className="mt-8 space-y-6 text-muted-foreground">

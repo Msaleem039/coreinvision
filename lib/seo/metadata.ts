@@ -43,6 +43,8 @@ export function createMetadata(input: PageSeoInput): Metadata {
     title,
     description,
     keywords: input.keywords,
+    publisher: siteConfig.name,
+    creator: siteConfig.name,
     alternates: {
       canonical: url,
       languages: {
@@ -88,14 +90,13 @@ export function createMetadata(input: PageSeoInput): Metadata {
 }
 
 export const defaultMetadata: Metadata = createMetadata({
-  title: `${siteConfig.name} — Custom Software & SaaS Development`,
-  description:
-    "Hire a senior US software agency for Next.js, AI integrations, SaaS, and cloud. Nationwide delivery. Book a free discovery call today.",
+  title: `${siteConfig.name} — Local SEO & Web Design`,
+  description: siteConfig.description,
   path: "/",
   keywords: [
-    "software development company",
-    "Next.js agency",
-    "SaaS development",
-    "AI integration services",
+    "local SEO",
+    "high-converting websites",
+    "lead generation",
+    "web design for local business",
   ],
 });

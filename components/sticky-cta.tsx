@@ -2,10 +2,7 @@
 
 import Link from "next/link";
 import { MessageCircle, PhoneCall } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { whatsappHref } from "@/lib/site";
-import { siteConfig } from "@/lib/site";
-import { cn } from "@/lib/utils";
+import { whatsappHref, siteConfig } from "@/lib/site";
 
 export function StickyCta() {
   return (
@@ -15,10 +12,7 @@ export function StickyCta() {
       aria-label="Quick contact actions"
     >
       <div className="mx-auto flex max-w-lg gap-2">
-        <Link
-          href="/contact"
-          className={cn(buttonVariants({ size: "sm" }), "flex-1 gap-1.5")}
-        >
+        <Link href="/contact" className="btn-primary flex-1 gap-1.5 text-xs sm:text-sm">
           <PhoneCall className="size-4" aria-hidden />
           Book call
         </Link>
@@ -26,7 +20,7 @@ export function StickyCta() {
           href={whatsappHref(`Hi ${siteConfig.name}, I'd like to discuss a project.`)}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: "accent", size: "sm" }), "flex-1 gap-1.5")}
+          className="btn-outline flex-1 gap-1.5 text-xs sm:text-sm"
         >
           <MessageCircle className="size-4" aria-hidden />
           WhatsApp

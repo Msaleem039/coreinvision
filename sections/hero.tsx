@@ -3,100 +3,48 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { siteConfig, whatsappHref } from "@/lib/site";
-import { buttonVariants } from "@/components/ui/button";
+import { homeHero } from "@/lib/home-page";
 import { Container } from "@/components/container";
-import { cn } from "@/lib/utils";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden border-b border-border/60">
-      <div className="pointer-events-none absolute inset-0">
-        <Image
-          src="/image.webp"
-          alt={`${siteConfig.name} — custom software development team collaborating on a web application project`}
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-background/92 via-background/88 to-background/95 dark:from-background/90 dark:via-background/82 dark:to-background/95"
-          aria-hidden
-        />
-        <div className="absolute inset-0 bg-grid opacity-60" aria-hidden />
-      </div>
-      <div className="pointer-events-none absolute -top-40 left-1/2 z-[1] h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-gradient-to-r from-primary/25 via-violet-500/20 to-cyan-500/25 blur-3xl dark:from-primary/20 dark:via-violet-500/15 dark:to-cyan-500/20" />
-      <Container className="relative z-10 py-20 sm:py-28 lg:py-32">
+    <section className="border-b border-border bg-surface">
+      <Container className="grid items-center gap-12 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-3xl text-center"
+          transition={{ duration: 0.5 }}
         >
-          {/* <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border glass-panel px-4 py-1.5 text-xs font-medium text-muted-foreground">
-            <Sparkles className="size-3.5 text-accent" aria-hidden />
-            USA-based delivery · Next.js · AI · Cloud
-          </div> */}
-          <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Software development company for{" "}
-            <span className="text-gradient">Next.js, SaaS & AI</span>
+          <h1 className="text-4xl font-semibold leading-[1.15] text-navy sm:text-5xl lg:text-[3.25rem]">
+            {homeHero.title}
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground sm:text-xl">
-            {siteConfig.name} is a US-based software development company partnering with startups
-            and growing businesses across the United States to design, build, and scale web apps,
-            AI features, and automation—with the polish your users notice.
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            {homeHero.subtitle}
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-            <Link
-              href="/contact"
-              className={cn(buttonVariants({ size: "lg" }), "inline-flex gap-2")}
-            >
-              Start a project
-              <ArrowRight className="size-4" />
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Link href="/contact" className="btn-primary">
+              {homeHero.primaryCta}
             </Link>
-            <Link
-              href={whatsappHref(
-                `Hi ${siteConfig.name}, I'd like to discuss a project.`,
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ variant: "secondary", size: "lg" }),
-                "border-border/80",
-              )}
-            >
-              WhatsApp us
+            <Link href="/contact" className="btn-outline">
+              {homeHero.secondaryCta}
             </Link>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto mt-16 max-w-5xl"
+          transition={{ duration: 0.55, delay: 0.1 }}
+          className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border shadow-lg lg:aspect-square"
         >
-          <div className="glass-panel relative overflow-hidden rounded-2xl border border-border/80 p-1 shadow-2xl shadow-primary/10">
-            <div className="rounded-xl bg-gradient-to-br from-card via-muted/40 to-card p-6 sm:p-10">
-              <div className="grid gap-6 sm:grid-cols-3">
-                {[
-                  { label: "Median time to demo", value: "10 days" },
-                  { label: "Senior-led squads", value: "100%" },
-                  { label: "Cloud-native defaults", value: "AWS" },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-xl border border-border/60 bg-background/50 p-4 text-left"
-                  >
-                    <p className="text-2xl font-semibold tracking-tight">{item.value}</p>
-                    <p className="mt-1 text-sm text-muted-foreground">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <Image
+            src="/home1.jpg"
+            alt="Custom software development for US businesses — coreinvision"
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
         </motion.div>
       </Container>
     </section>

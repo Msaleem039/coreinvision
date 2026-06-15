@@ -2,7 +2,6 @@ import Link from "next/link";
 import { createMetadata } from "@/lib/seo/metadata";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = createMetadata({
@@ -16,7 +15,6 @@ export default function PrivacyPage() {
   return (
     <Section className="py-16">
       <Container className="max-w-3xl">
-        <Breadcrumbs items={[{ name: "Privacy Policy", path: "/privacy" }]} className="mb-8" />
         <h1 className="text-4xl font-semibold tracking-tight">Privacy Policy</h1>
         <p className="mt-2 text-sm text-muted-foreground">Last updated: March 2026</p>
         <div className="prose prose-neutral dark:prose-invert mt-8 max-w-none space-y-6 text-muted-foreground">

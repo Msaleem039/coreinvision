@@ -11,13 +11,10 @@ import {
 import { getServiceSeoPage, getAllServiceSlugs } from "@/lib/seo/service-pages";
 import { serviceFaqsBySlug } from "@/lib/seo/faq";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FaqSection } from "@/components/seo/faq-section";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
 import { FadeIn } from "@/components/motion";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -63,16 +60,12 @@ export default async function ServiceDetailPage({ params }: Props) {
         ]}
       />
 
-      <Section className="border-b border-border/60 bg-muted/20 pb-12 pt-12 sm:pt-16">
+      <Section className="border-b border-border bg-surface pb-12 pt-12 sm:pt-16">
         <Container>
-          <Breadcrumbs items={breadcrumbs} className="mb-6" />
           <FadeIn className="max-w-3xl">
-            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{page.title}</h1>
+            <h1 className="section-title">{page.title}</h1>
             <p className="mt-5 text-lg text-muted-foreground">{page.heroSubtitle}</p>
-            <Link
-              href="/contact"
-              className={cn(buttonVariants({ size: "lg" }), "mt-8 inline-flex gap-2")}
-            >
+            <Link href="/contact" className="btn-primary mt-8 inline-flex">
               Get a free consultation
               <ArrowRight className="size-4" aria-hidden />
             </Link>
@@ -96,7 +89,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           </article>
 
           <div className="mx-auto mt-8 grid max-w-5xl gap-8 lg:grid-cols-2">
-            <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+            <div className="card-clean p-6 sm:p-8">
               <h2 className="text-xl font-semibold">Key benefits</h2>
               <ul className="mt-4 space-y-3">
                 {page.benefits.map((b) => (
@@ -107,7 +100,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+            <div className="card-clean p-6 sm:p-8">
               <h2 className="text-xl font-semibold">Features & capabilities</h2>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {page.features.map((f) => (
@@ -130,7 +123,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         </Container>
       ) : null}
 
-      <Section className="bg-muted/25">
+      <Section className="bg-surface border-y border-border">
         <Container>
           <h2 className="text-2xl font-semibold">Related services</h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-3">
@@ -141,7 +134,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <li key={related}>
                   <Link
                     href={`/services/${related}`}
-                    className="block rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-muted/30"
+                    className="card-clean block p-5 transition-shadow hover:shadow-md"
                   >
                     <span className="font-semibold">{relatedPage.title}</span>
                     <p className="mt-2 text-sm text-muted-foreground line-clamp-2">

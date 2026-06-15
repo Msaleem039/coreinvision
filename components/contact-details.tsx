@@ -1,14 +1,12 @@
 import Link from "next/link";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { siteConfig, whatsappHref } from "@/lib/site";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export function ContactDetails() {
   const hours = siteConfig.openingHours[0];
 
   return (
-    <div className="space-y-6 rounded-2xl border border-border bg-muted/30 p-6">
+    <div className="card-clean space-y-6 p-6">
       <div>
         <h3 className="text-sm font-semibold">Contact details</h3>
         <p className="mt-1 text-sm text-muted-foreground">
@@ -55,7 +53,7 @@ export function ContactDetails() {
         href={whatsappHref(`Hi ${siteConfig.name}, I'd like to discuss a project.`)}
         target="_blank"
         rel="noopener noreferrer"
-        className={cn(buttonVariants({ variant: "accent", size: "lg" }), "w-full gap-2")}
+        className="btn-primary w-full"
       >
         <MessageCircle className="size-5" aria-hidden />
         WhatsApp lead channel

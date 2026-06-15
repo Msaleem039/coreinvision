@@ -2,7 +2,6 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { testimonials } from "@/lib/data";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 
 export const metadata = createMetadata({
   title: "Client Testimonials & Reviews",
@@ -15,7 +14,6 @@ export default function TestimonialsPage() {
   return (
     <Section className="py-16">
       <Container>
-        <Breadcrumbs items={[{ name: "Testimonials", path: "/testimonials" }]} className="mb-8" />
         <h1 className="text-4xl font-semibold tracking-tight">Client testimonials</h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
           Feedback from product leaders and operators we have supported across the United States.

@@ -3,17 +3,13 @@ import { MessageCircle } from "lucide-react";
 import { siteConfig, whatsappHref } from "@/lib/site";
 import { createMetadata } from "@/lib/seo/metadata";
 import { pageKeywords } from "@/lib/seo/keywords";
-import { breadcrumbSchema } from "@/lib/seo/schema";
+import { breadcrumbSchema, webPageSchema } from "@/lib/seo/schema";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FadeIn } from "@/components/motion";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
-import { ContactForm } from "@/components/contact-form";
 import { ContactDetails } from "@/components/contact-details";
-import { BookingWidget } from "@/components/booking-widget";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { ContactForm } from "@/components/contact-form";
 
 export const metadata = createMetadata({
   title: "Contact — Hire Software Developers",
@@ -27,15 +23,21 @@ export default function ContactPage() {
   const breadcrumbs = [{ name: "Contact", path: "/contact" }];
   return (
     <>
-      <JsonLd data={breadcrumbSchema(breadcrumbs)} />
-      <Section className="border-b border-border/60 bg-muted/20 pb-12 pt-12 sm:pb-16 sm:pt-16">
+      <JsonLd
+        data={[
+          breadcrumbSchema(breadcrumbs),
+          webPageSchema({
+            name: "Contact — Hire Software Developers",
+            description:
+              "Contact coreinvision for Next.js, AI, SaaS and cloud projects. Form, WhatsApp, phone, and map.",
+            path: "/contact",
+          }),
+        ]}
+      />
+      <Section className="border-b border-border bg-surface pb-12 pt-12 sm:pb-16 sm:pt-16">
         <Container>
-          <Breadcrumbs items={breadcrumbs} className="mb-6" />
           <FadeIn className="max-w-3xl">
-            <p className="text-sm font-semibold text-primary">Contact</p>
-            <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-              Tell us what you are building
-            </h1>
+            <h1 className="section-title">Tell us what you are building</h1>
             <p className="mt-5 text-lg text-muted-foreground">
               We respond within one business day. WhatsApp is available for quick project inquiries
               and scheduling.
@@ -44,10 +46,7 @@ export default function ContactPage() {
               href={whatsappHref(`Hi ${siteConfig.name}, I'd like to discuss a project.`)}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ size: "lg", variant: "accent" }),
-                "mt-8 inline-flex gap-2",
-              )}
+              className="btn-primary mt-8 inline-flex"
             >
               <MessageCircle className="size-5" aria-hidden />
               Chat on WhatsApp

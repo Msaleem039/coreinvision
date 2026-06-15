@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "coreinvision",
-  tagline: "Premium software for ambitious teams",
-  footerTagline: "Software solutions",
+  tagline: "We build fast, modern, and conversion-focused websites for startups, local businesses, and growing companies. Our services include web development, UI/UX design, and SEO optimization.",
+  footerTagline: "SEO & high-converting websites",
   description:
-    "USA-based software agency building Next.js apps, AI-powered SaaS, and automation for startups and growing businesses across the United States.",
+    "We build fast, modern, and conversion-focused websites for startups, local businesses, and growing companies. Our services include web development, UI/UX design, and SEO optimization. USA-based team building fast, search-optimized sites that turn visitors into customers.",
   location: "Long Branch, New Jersey, United States (Remote)",
   address: {
     street: "80 Broad Street, 5th Floor",
@@ -47,7 +47,8 @@ export const navLinks = [
 ] as const;
 
 export function whatsappHref(message?: string) {
-  const base = `https://wa.me/${siteConfig.whatsappE164}`;
+  const digits = siteConfig.whatsappE164.replace(/\D/g, "");
+  const base = `https://wa.me/${digits}`;
   if (!message) return base;
   return `${base}?text=${encodeURIComponent(message)}`;
 }

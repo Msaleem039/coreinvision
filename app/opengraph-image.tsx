@@ -17,7 +17,7 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: 64,
-          background: "linear-gradient(135deg, #0b0f19 0%, #1e1b4b 50%, #0e7490 100%)",
+          background: "linear-gradient(135deg, #1a2b3c 0%, #0d5c6d 55%, #0d9488 100%)",
           color: "white",
           fontFamily: "system-ui, sans-serif",
         }}
@@ -34,8 +34,8 @@ export default function OpenGraphImage() {
             style={{
               width: 56,
               height: 56,
-              borderRadius: 16,
-              background: "linear-gradient(135deg, #6366f1, #22d3ee)",
+              borderRadius: 8,
+              background: "#0d9488",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -47,11 +47,11 @@ export default function OpenGraphImage() {
           </div>
           <span style={{ fontSize: 28, fontWeight: 600, opacity: 0.9 }}>{siteConfig.name}</span>
         </div>
-        <div style={{ fontSize: 56, fontWeight: 700, lineHeight: 1.15, maxWidth: 900 }}>
-          Custom Software, SaaS & AI Development
+        <div style={{ fontSize: 48, fontWeight: 700, lineHeight: 1.2, maxWidth: 900 }}>
+          {siteConfig.tagline}
         </div>
         <div style={{ fontSize: 24, marginTop: 24, opacity: 0.85, maxWidth: 800 }}>
-          Next.js · Cloud · Automation — USA-based delivery
+          Local SEO · Web Design · Lead Generation
         </div>
       </div>
     ),

@@ -1,43 +1,43 @@
 @import "tailwindcss";
 
+/* AVIBE-inspired: clean white surfaces, navy type, teal accent */
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #ffffff;
+  --foreground: #1a2b3c;
   --card: #ffffff;
-  --card-foreground: #0f172a;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --border: #e2e8f0;
-  --ring: #6366f1;
-  --primary: #4f46e5;
-  --primary-foreground: #f8fafc;
-  --accent: #06b6d4;
-  --accent-foreground: #042f2e;
-  --gradient-from: #4f46e5;
-  --gradient-via: #7c3aed;
-  --gradient-to: #0891b2;
-  --glass: rgba(255, 255, 255, 0.65);
-  --glass-border: rgba(148, 163, 184, 0.35);
+  --card-foreground: #1a2b3c;
+  --muted: #f4f7fa;
+  --muted-foreground: #5c6b7a;
+  --border: #dde4ec;
+  --ring: #0d7a8c;
+  --primary: #0d5c6d;
+  --primary-foreground: #ffffff;
+  --accent: #0d9488;
+  --accent-foreground: #ffffff;
+  --navy: #1a2b3c;
+  --navy-light: #2d4a5e;
+  --surface: #f8fafb;
+  --gradient-from: #0d5c6d;
+  --gradient-via: #0d7a8c;
+  --gradient-to: #0d9488;
 }
 
 .dark {
-  --background: #0b0f19;
-  --foreground: #e8eefc;
-  --card: #111827;
-  --card-foreground: #e8eefc;
-  --muted: #151c2c;
-  --muted-foreground: #94a3b8;
-  --border: #1e293b;
-  --ring: #818cf8;
-  --primary: #6366f1;
-  --primary-foreground: #f8fafc;
-  --accent: #22d3ee;
-  --accent-foreground: #042f2e;
-  --gradient-from: #6366f1;
-  --gradient-via: #a855f7;
-  --gradient-to: #22d3ee;
-  --glass: rgba(17, 24, 39, 0.55);
-  --glass-border: rgba(148, 163, 184, 0.12);
+  --background: #111c28;
+  --foreground: #eef3f7;
+  --card: #1a2b3c;
+  --card-foreground: #eef3f7;
+  --muted: #1e3040;
+  --muted-foreground: #94a8b8;
+  --border: #2d4458;
+  --ring: #2dd4bf;
+  --primary: #2dd4bf;
+  --primary-foreground: #0f2433;
+  --accent: #14b8a6;
+  --accent-foreground: #0f2433;
+  --navy: #eef3f7;
+  --navy-light: #c5d3de;
+  --surface: #152535;
 }
 
 @theme inline {
@@ -53,11 +53,13 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-navy: var(--navy);
+  --color-surface: var(--surface);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.625rem;
+  --radius-2xl: 0.75rem;
 }
 
 @layer base {
@@ -68,44 +70,33 @@
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
   }
+  h1, h2, h3, h4 {
+    @apply text-navy tracking-tight;
+  }
 }
 
-/* Subtle grid for hero depth */
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgb(148 163 184 / 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(148 163 184 / 0.08) 1px, transparent 1px);
-  background-size: 48px 48px;
+.section-title {
+  @apply text-3xl font-semibold text-navy sm:text-4xl lg:text-[2.75rem] lg:leading-tight;
 }
 
-.dark .bg-grid {
-  background-image:
-    linear-gradient(to right, rgb(148 163 184 / 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(148 163 184 / 0.06) 1px, transparent 1px);
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90;
 }
 
-/* Tech stack band — cyan grid on deep navy (matches premium dark SaaS reference) */
-.bg-grid-tech {
-  background-image:
-    linear-gradient(to right, rgb(56 189 248 / 0.09) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(56 189 248 / 0.09) 1px, transparent 1px);
-  background-size: 56px 56px;
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 rounded-md border-2 border-primary bg-transparent px-6 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/5;
 }
 
-.glass-panel {
-  background: var(--glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
+.card-clean {
+  @apply rounded-lg border border-border bg-card shadow-sm;
+}
+
+.bg-surface {
+  background-color: var(--surface);
 }
 
 .text-gradient {
-  background: linear-gradient(
-    120deg,
-    var(--gradient-from),
-    var(--gradient-via),
-    var(--gradient-to)
-  );
+  background: linear-gradient(120deg, var(--gradient-from), var(--gradient-to));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

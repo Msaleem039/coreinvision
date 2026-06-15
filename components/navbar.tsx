@@ -6,9 +6,9 @@ import { Menu, X } from "lucide-react";
 import * as React from "react";
 import { siteConfig, navLinks } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { ModeToggle } from "@/components/mode-toggle";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
+import Image from "next/image";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -19,16 +19,22 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/70 backdrop-blur-xl supports-[backdrop-filter]:bg-background/55">
-      <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg shadow-primary/30">
-            V
-          </span>
-          <span className="hidden text-base sm:inline">{siteConfig.name}</span>
+    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-sm">
+      <Container className="flex h-[4.5rem] items-center justify-between gap-4">
+        <Link href="/" className="flex items-center gap-3">
+          {/* <span className="flex size-10 items-center justify-center rounded-md bg-primary text-lg font-bold text-white">
+            C
+          </span> */}
+          <Image src="/logo3.png" alt="Logo" width={100} height={100} className="w-32 h-32" />
+          {/* <div className="leading-tight">
+            <span className="block text-base font-semibold text-navy">{siteConfig.name}</span>
+            <span className="hidden text-[11px] text-muted-foreground sm:block">
+              {siteConfig.footerTagline}
+            </span>
+          </div> */}
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {navLinks.map((link) => {
             const active = pathname === link.href;
             return (
@@ -36,8 +42,8 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted/80 hover:text-foreground",
-                  active && "bg-muted text-foreground",
+                  "px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary",
+                  active && "text-primary",
                 )}
               >
                 {link.label}
@@ -46,23 +52,15 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <ModeToggle />
-          <Link
-            href="/contact"
-            className={cn(
-              buttonVariants({ size: "sm" }),
-              "hidden shadow-md shadow-primary/25 sm:inline-flex",
-            )}
-          >
-            Book a call
+        <div className="flex items-center gap-3">
+          <Link href="/contact" className="btn-primary hidden !py-2.5 !text-sm sm:inline-flex">
+            Start your project
           </Link>
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="lg:hidden"
             aria-expanded={open}
-            aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
           >
@@ -72,25 +70,19 @@ export function Navbar() {
       </Container>
 
       {open ? (
-        <div
-          id="mobile-nav"
-          className="border-t border-border bg-background/95 px-4 py-4 backdrop-blur-xl md:hidden"
-        >
+        <div className="border-t border-border bg-white px-4 py-4 lg:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-xl px-3 py-3 text-sm font-medium text-foreground hover:bg-muted"
+                className="rounded-md px-3 py-3 text-sm font-medium text-navy hover:bg-muted"
               >
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className="mt-2 rounded-xl bg-primary px-3 py-3 text-center text-sm font-semibold text-primary-foreground"
-            >
-              Book a call
+            <Link href="/contact" className="btn-primary mt-2 text-center">
+              Start your project
             </Link>
           </div>
         </div>

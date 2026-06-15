@@ -2,7 +2,6 @@ import Link from "next/link";
 import { createMetadata } from "@/lib/seo/metadata";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 
 export const metadata = createMetadata({
   title: "Press & News",
@@ -28,7 +27,6 @@ export default function PressPage() {
   return (
     <Section className="py-16">
       <Container className="max-w-3xl">
-        <Breadcrumbs items={[{ name: "Press & News", path: "/press" }]} className="mb-8" />
         <h1 className="text-4xl font-semibold tracking-tight">Press &amp; news</h1>
         <p className="mt-4 text-muted-foreground">
           Media inquiries:{" "}

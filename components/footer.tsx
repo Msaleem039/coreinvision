@@ -58,19 +58,19 @@ function SocialGlyph({ item }: { item: (typeof socialLinks)[number] }) {
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/30">
+    <footer className="border-t border-border bg-navy text-slate-300">
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand + contact (company name → home; location from siteConfig) */}
           <div className="space-y-5">
             <Link href="/" className="inline-block rounded-lg outline-none ring-offset-background transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring">
               <div className="flex items-start gap-3">
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-lg font-bold text-primary-foreground">
-                  V
-                </span>
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-md bg-primary text-lg font-bold text-white">
+                C
+              </span>
                 <div className="leading-tight">
                   <p className="text-xs font-medium text-muted-foreground">{siteConfig.footerTagline}</p>
-                  <p className="text-lg font-semibold tracking-tight text-foreground">{siteConfig.name}</p>
+                  <p className="text-lg font-semibold tracking-tight text-white">{siteConfig.name}</p>
                 </div>
               </div>
             </Link>
@@ -85,7 +85,7 @@ export function Footer() {
                     aria-label={item.label}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex size-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+                    className="inline-flex size-10 items-center justify-center rounded-full border border-slate-600 bg-slate-800/50 text-slate-300 transition-colors hover:border-primary hover:text-white"
                   >
                     <SocialGlyph item={item} />
                   </a>
@@ -100,14 +100,14 @@ export function Footer() {
               </li>
               <li className="flex gap-2.5">
                 <Mail className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
-                <a className="hover:text-foreground" href={`mailto:${siteConfig.email}`}>
+                <a className="hover:text-white" href={`mailto:${siteConfig.email}`}>
                   {siteConfig.email}
                 </a>
               </li>
               {siteConfig.phone ? (
                 <li className="flex gap-2.5">
                   <Phone className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
-                  <a className="hover:text-foreground" href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}>
+                  <a className="hover:text-white" href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}>
                     {siteConfig.phone}
                   </a>
                 </li>
@@ -116,11 +116,11 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-foreground">Company</p>
+            <p className="text-sm font-semibold text-white">Company</p>
             <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
               {footerCompanyLinks.map((l) => (
                 <li key={l.label}>
-                  <Link className="transition-colors hover:text-foreground" href={l.href}>
+                  <Link className="transition-colors hover:text-white" href={l.href}>
                     {l.label}
                   </Link>
                 </li>
@@ -129,11 +129,11 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-foreground">Services</p>
+            <p className="text-sm font-semibold text-white">Services</p>
             <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
               {footerServiceLinks.map((l) => (
                 <li key={l.label}>
-                  <Link className="transition-colors hover:text-foreground" href={l.href}>
+                  <Link className="transition-colors hover:text-white" href={l.href}>
                     {l.label}
                   </Link>
                 </li>
@@ -142,11 +142,11 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-foreground">Dedicated Resources</p>
+            <p className="text-sm font-semibold text-white">Dedicated Resources</p>
             <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
               {footerResourceLinks.map((l) => (
                 <li key={l.label}>
-                  <Link className="transition-colors hover:text-foreground" href={l.href}>
+                  <Link className="transition-colors hover:text-white" href={l.href}>
                     {l.label}
                   </Link>
                 </li>
@@ -155,20 +155,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-border pt-8 text-xs text-muted-foreground sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-slate-600 pt-8 text-xs text-slate-400 sm:flex-row sm:items-center">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <ul className="flex flex-wrap gap-x-4 gap-y-2">
             {footerLegalLinks.map((l) => (
               <li key={l.href}>
-                <Link className="hover:text-foreground" href={l.href}>
+                <Link className="hover:text-white" href={l.href}>
                   {l.label}
                 </Link>
               </li>
             ))}
             <li>
-              <Link className="hover:text-foreground" href="/feed.xml">
+              <Link className="hover:text-white" href="/feed.xml">
                 RSS Feed
               </Link>
             </li>

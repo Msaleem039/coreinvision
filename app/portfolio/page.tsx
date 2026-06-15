@@ -5,12 +5,9 @@ import { createMetadata } from "@/lib/seo/metadata";
 import { pageKeywords } from "@/lib/seo/keywords";
 import { breadcrumbSchema } from "@/lib/seo/schema";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { FadeIn, FadeInStagger, FadeInItem } from "@/components/motion";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export const metadata = createMetadata({
   title: "Case Studies & Portfolio — Software Projects",
@@ -25,17 +22,15 @@ export default function PortfolioPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema(breadcrumbs)} />
-      <Section className="border-b border-border/60 bg-muted/20 pb-16 pt-12 sm:pt-16">
+      <Section className="border-b border-border bg-surface pb-16 pt-12 sm:pt-16">
         <Container>
-          <Breadcrumbs items={breadcrumbs} className="mb-6" />
           <FadeIn className="max-w-3xl">
-            <p className="text-sm font-semibold text-primary">Portfolio</p>
-            <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Case studies</h1>
+            <h1 className="section-title">Case studies</h1>
             <p className="mt-5 text-lg text-muted-foreground">
               Problem, solution, stack, and results—documented the way technical buyers and operating
               leaders evaluate partners.
             </p>
-            <Link href="/contact" className={cn(buttonVariants({ size: "lg" }), "mt-8 inline-flex")}>
+            <Link href="/contact" className="btn-primary mt-8 inline-flex">
               Start a similar engagement
             </Link>
           </FadeIn>
@@ -49,7 +44,7 @@ export default function PortfolioPage() {
               <FadeInItem key={p.slug}>
                 <article
                   id={p.slug}
-                  className="scroll-mt-28 overflow-hidden rounded-3xl border border-border bg-card shadow-sm"
+                  className="card-clean scroll-mt-28 overflow-hidden"
                 >
                   <div className="grid gap-0 lg:grid-cols-2">
                     <div className="relative aspect-[4/3] min-h-[240px] lg:aspect-auto lg:min-h-[360px]">
@@ -60,12 +55,7 @@ export default function PortfolioPage() {
                         className="object-cover"
                         sizes="(max-width: 1024px) 100vw, 50vw"
                       />
-                      <div
-                        className={cn(
-                          "absolute inset-0 bg-gradient-to-tr opacity-70 mix-blend-multiply dark:mix-blend-screen",
-                          p.accent,
-                        )}
-                      />
+                      <div className="absolute inset-0 bg-primary/10" />
                     </div>
                     <div className="flex flex-col justify-center p-8 sm:p-10">
                       <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">

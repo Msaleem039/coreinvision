@@ -2,8 +2,9 @@
 
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/lib/data";
+import { homeTrust } from "@/lib/home-page";
 import { FadeIn } from "@/components/motion";
 import { Container } from "@/components/container";
 import { Section } from "@/components/section";
@@ -18,74 +19,60 @@ export function TestimonialSlider() {
   const next = () => setIndex((i) => (i + 1) % len);
 
   React.useEffect(() => {
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % len), 7000);
+    const id = window.setInterval(() => setIndex((i) => (i + 1) % len), 8000);
     return () => window.clearInterval(id);
   }, [len]);
 
   return (
-    <Section className="bg-muted/20">
+    <Section className="bg-surface border-y border-border">
       <Container>
-        <FadeIn className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">What clients say</h2>
-          <p className="mt-4 text-muted-foreground sm:text-lg">
-            Teams across the United States partner with us for velocity without sacrificing quality.
-          </p>
+        <FadeIn className="mx-auto max-w-3xl text-center">
+          <h2 className="section-title">{homeTrust.title}</h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{homeTrust.description}</p>
         </FadeIn>
 
         <FadeIn className="relative mx-auto mt-12 max-w-3xl">
-          <div className="glass-panel relative overflow-hidden rounded-2xl border border-border/80 p-8 sm:p-10">
-            <Quote className="absolute right-6 top-6 size-10 text-primary/15" aria-hidden />
+          <div className="card-clean relative p-8 sm:p-10">
             <AnimatePresence mode="wait">
               <motion.figure
                 key={t.name}
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -24 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="relative"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
               >
-                <blockquote className="text-pretty text-lg leading-relaxed text-foreground sm:text-xl">
-                  “{t.quote}”
+                <blockquote className="text-center text-lg leading-relaxed text-navy sm:text-xl">
+                  &ldquo;{t.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-8 flex items-center gap-3">
-                  <span
-                    className="flex size-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-sm font-bold text-primary-foreground"
-                    aria-hidden
-                  >
-                    {t.flag}
-                  </span>
-                  <div>
-                    <p className="font-semibold">{t.name}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {t.role} · {t.org}
-                    </p>
-                  </div>
+                <figcaption className="mt-8 text-center">
+                  <p className="font-semibold text-navy">{t.name}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {t.role}, {t.org}
+                  </p>
                 </figcaption>
               </motion.figure>
             </AnimatePresence>
 
-            <div className="mt-8 flex items-center justify-between gap-4">
-              <div className="flex gap-1.5">
+            <div className="mt-8 flex items-center justify-center gap-4">
+              <Button type="button" variant="outline" size="icon" onClick={prev} aria-label="Previous">
+                <ChevronLeft className="size-4" />
+              </Button>
+              <div className="flex gap-2">
                 {testimonials.map((_, i) => (
                   <button
                     key={i}
                     type="button"
-                    aria-label={`Go to testimonial ${i + 1}`}
+                    aria-label={`Testimonial ${i + 1}`}
                     onClick={() => setIndex(i)}
                     className={`h-2 rounded-full transition-all ${
-                      i === index ? "w-8 bg-primary" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                      i === index ? "w-8 bg-primary" : "w-2 bg-border"
                     }`}
                   />
                 ))}
               </div>
-              <div className="flex gap-2">
-                <Button type="button" variant="outline" size="icon" onClick={prev} aria-label="Previous testimonial">
-                  <ChevronLeft className="size-4" />
-                </Button>
-                <Button type="button" variant="outline" size="icon" onClick={next} aria-label="Next testimonial">
-                  <ChevronRight className="size-4" />
-                </Button>
-              </div>
+              <Button type="button" variant="outline" size="icon" onClick={next} aria-label="Next">
+                <ChevronRight className="size-4" />
+              </Button>
             </div>
           </div>
         </FadeIn>
