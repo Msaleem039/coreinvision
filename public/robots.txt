@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+# Host
+Host: https://coreinvision.com
+
+# Sitemaps
+Sitemap: https://coreinvision.com/sitemap.xml
